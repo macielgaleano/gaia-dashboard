@@ -10,7 +10,7 @@ import {
 
 export default function Categories() {
   const [dropdown1, setdropdown1] = React.useState(false);
-  const [inputVale, setInputVale] = React.useState("Seleccione una categoria");
+  const [inputVale] = React.useState("Seleccione una categoria");
 
   function toggle() {
     dropdown1 ? setdropdown1(false) : setdropdown1(true);
