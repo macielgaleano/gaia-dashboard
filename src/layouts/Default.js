@@ -4,9 +4,9 @@ import { Container, Row, Col } from "shards-react";
 
 import MainNavbar from "../components/layout/MainNavbar/MainNavbar";
 import MainSidebar from "../components/layout/MainSidebar/MainSidebar";
-import MainFooter from "../components/layout/MainFooter";
+// import MainFooter from "../components/layout/MainFooter";
 
-const DefaultLayout = ({ children, noNavbar, noFooter }) => (
+const DefaultLayout = ({ children, noNavbar }) => (
   <Container fluid>
     <Row>
       <MainSidebar />
@@ -19,7 +19,7 @@ const DefaultLayout = ({ children, noNavbar, noFooter }) => (
       >
         {!noNavbar && <MainNavbar />}
         {children}
-        {!noFooter && <MainFooter />}
+        {/* {!noFooter && <MainFooter />} */}
       </Col>
     </Row>
   </Container>
@@ -33,12 +33,12 @@ DefaultLayout.propTypes = {
   /**
    * Whether to display the footer, or not.
    */
-  noFooter: PropTypes.bool
+  noFooter: PropTypes.bool,
 };
 
 DefaultLayout.defaultProps = {
   noNavbar: false,
-  noFooter: false
+  noFooter: false,
 };
 
 export default DefaultLayout;
