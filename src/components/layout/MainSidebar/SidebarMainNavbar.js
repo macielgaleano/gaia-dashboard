@@ -13,7 +13,7 @@ class SidebarMainNavbar extends React.Component {
 
   handleToggleSidebar() {
     Dispatcher.dispatch({
-      actionType: Constants.TOGGLE_SIDEBAR
+      actionType: Constants.TOGGLE_SIDEBAR,
     });
   }
 
@@ -25,11 +25,7 @@ class SidebarMainNavbar extends React.Component {
           className="align-items-stretch bg-white flex-md-nowrap border-bottom p-0"
           type="light"
         >
-          <NavbarBrand
-            className="w-100 mr-0"
-            href="#"
-            style={{ lineHeight: "25px" }}
-          >
+          <NavbarBrand className="w-100 mr-0" href="#" style={{ lineHeight: "25px" }}>
             <div className="d-table m-auto">
               <img
                 id="main-logo"
@@ -39,9 +35,7 @@ class SidebarMainNavbar extends React.Component {
                 alt="Shards Dashboard"
               />
               {!hideLogoText && (
-                <span className="d-none d-md-inline ml-1">
-                  Shards Dashboard
-                </span>
+                <span className="d-none d-md-inline ml-1">Gaia Dashboard</span>
               )}
             </div>
           </NavbarBrand>
@@ -62,11 +56,11 @@ SidebarMainNavbar.propTypes = {
   /**
    * Whether to hide the logo text, or not.
    */
-  hideLogoText: PropTypes.bool
+  hideLogoText: PropTypes.bool,
 };
 
 SidebarMainNavbar.defaultProps = {
-  hideLogoText: false
+  hideLogoText: false,
 };
 
 export default SidebarMainNavbar;

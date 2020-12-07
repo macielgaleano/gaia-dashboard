@@ -6,53 +6,53 @@ import { DefaultLayout } from "./layouts";
 
 // Route Views
 import BlogOverview from "./views/BlogOverview";
-import UserProfileLite from "./views/UserProfileLite";
+// import UserProfileLite from "./views/UserProfileLite";
 import AddNewPost from "./views/AddNewPost";
-import Errors from "./views/Errors";
+// import Errors from "./views/Errors";
 import ComponentsOverview from "./views/ComponentsOverview";
 import Tables from "./views/Tables";
-import BlogPosts from "./views/BlogPosts";
+// import BlogPosts from "./views/BlogPosts";
 
 export default [
   {
     path: "/",
     exact: true,
     layout: DefaultLayout,
-    component: () => <Redirect to="/blog-overview" />
+    component: () => <Redirect to="/blog-overview" />,
   },
   {
     path: "/blog-overview",
     layout: DefaultLayout,
-    component: BlogOverview
+    component: BlogOverview,
   },
+  // {
+  //   path: "/user-profile-lite",
+  //   layout: DefaultLayout,
+  //   component: UserProfileLite,
+  // },
   {
-    path: "/user-profile-lite",
+    path: "/AgregarProducto",
     layout: DefaultLayout,
-    component: UserProfileLite
+    component: AddNewPost,
   },
-  {
-    path: "/add-new-post",
-    layout: DefaultLayout,
-    component: AddNewPost
-  },
-  {
-    path: "/errors",
-    layout: DefaultLayout,
-    component: Errors
-  },
+  // {
+  //   path: "/errors",
+  //   layout: DefaultLayout,
+  //   component: Errors,
+  // },
   {
     path: "/components-overview",
     layout: DefaultLayout,
-    component: ComponentsOverview
+    component: ComponentsOverview,
   },
   {
     path: "/tables",
     layout: DefaultLayout,
-    component: Tables
+    component: Tables,
   },
-  {
-    path: "/blog-posts",
-    layout: DefaultLayout,
-    component: BlogPosts
-  }
+  // {
+  //   path: "/blog-posts",
+  //   layout: DefaultLayout,
+  //   component: BlogPosts,
+  // },
 ];

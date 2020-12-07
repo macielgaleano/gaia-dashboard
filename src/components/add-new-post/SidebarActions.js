@@ -8,7 +8,7 @@ import {
   CardBody,
   ListGroup,
   ListGroupItem,
-  Button
+  Button,
 } from "shards-react";
 
 const SidebarActions = ({ title }) => (
@@ -20,13 +20,13 @@ const SidebarActions = ({ title }) => (
     <CardBody className="p-0">
       <ListGroup flush>
         <ListGroupItem className="p-3">
-          <span className="d-flex mb-2">
+          {/* <span className="d-flex mb-2">
             <i className="material-icons mr-1">flag</i>
             <strong className="mr-1">Status:</strong> Draft{" "}
             <a className="ml-auto" href="#">
               Edit
             </a>
-          </span>
+          </span> */}
           <span className="d-flex mb-2">
             <i className="material-icons mr-1">visibility</i>
             <strong className="mr-1">Visibility:</strong>{" "}
@@ -37,23 +37,23 @@ const SidebarActions = ({ title }) => (
           </span>
           <span className="d-flex mb-2">
             <i className="material-icons mr-1">calendar_today</i>
-            <strong className="mr-1">Schedule:</strong> Now{" "}
+            <strong className="mr-1">Fecha de creacion: Ahora</strong>{" "}
             <a className="ml-auto" href="#">
               Edit
             </a>
           </span>
-          <span className="d-flex">
+          {/* <span className="d-flex">
             <i className="material-icons mr-1">score</i>
             <strong className="mr-1">Readability:</strong>{" "}
             <strong className="text-warning">Ok</strong>
-          </span>
+          </span> */}
         </ListGroupItem>
         <ListGroupItem className="d-flex px-3 border-0">
-          <Button outline theme="accent" size="sm">
+          {/* <Button outline theme="accent" size="sm">
             <i className="material-icons">save</i> Save Draft
-          </Button>
+          </Button> */}
           <Button theme="accent" size="sm" className="ml-auto">
-            <i className="material-icons">file_copy</i> Publish
+            <i className="material-icons">file_copy</i> Enviar
           </Button>
         </ListGroupItem>
       </ListGroup>
@@ -65,11 +65,11 @@ SidebarActions.propTypes = {
   /**
    * The component's title.
    */
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 
 SidebarActions.defaultProps = {
-  title: "Actions"
+  title: "Actions",
 };
 
 export default SidebarActions;

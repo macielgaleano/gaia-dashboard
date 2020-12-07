@@ -3,24 +3,20 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Container, Navbar } from "shards-react";
 
-import NavbarSearch from "./NavbarSearch";
-import NavbarNav from "./NavbarNav/NavbarNav";
-import NavbarToggle from "./NavbarToggle";
+// import NavbarSearch from "./NavbarSearch";
+// import NavbarNav from "./NavbarNav/NavbarNav";
+// import NavbarToggle from "./NavbarToggle";
 
 const MainNavbar = ({ layout, stickyTop }) => {
-  const classes = classNames(
-    "main-navbar",
-    "bg-white",
-    stickyTop && "sticky-top"
-  );
+  const classes = classNames("main-navbar", "bg-white", stickyTop && "sticky-top");
 
   return (
     <div className={classes}>
       <Container className="p-0">
         <Navbar type="light" className="align-items-stretch flex-md-nowrap p-0">
-          <NavbarSearch />
-          <NavbarNav />
-          <NavbarToggle />
+          {/* <NavbarSearch /> */}
+          {/* <NavbarNav /> */}
+          {/* <NavbarToggle /> */}
         </Navbar>
       </Container>
     </div>
@@ -35,11 +31,11 @@ MainNavbar.propTypes = {
   /**
    * Whether the main navbar is sticky to the top, or not.
    */
-  stickyTop: PropTypes.bool
+  stickyTop: PropTypes.bool,
 };
 
 MainNavbar.defaultProps = {
-  stickyTop: true
+  stickyTop: true,
 };
 
 export default MainNavbar;

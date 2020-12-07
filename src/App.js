@@ -7,25 +7,27 @@ import withTracker from "./withTracker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./shards-dashboard/shards-dashboard.1.1.0.min.css";
 
-export default () => (
-  <Router basename={process.env.REACT_APP_BASENAME || ""}>
-    <div>
-      {routes.map((route, index) => {
-        return (
-          <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            component={withTracker((props) => {
-              return (
-                <route.layout {...props}>
-                  <route.component {...props} />
-                </route.layout>
-              );
-            })}
-          />
-        );
-      })}
-    </div>
-  </Router>
-);
+export default () => {
+  return (
+    <Router basename={process.env.REACT_APP_BASENAME || ""}>
+      <div>
+        {routes.map((route, index) => {
+          return (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              component={withTracker((props) => {
+                return (
+                  <route.layout {...props}>
+                    <route.component {...props} />
+                  </route.layout>
+                );
+              })}
+            />
+          );
+        })}
+      </div>
+    </Router>
+  );
+};

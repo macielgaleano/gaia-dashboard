@@ -10,7 +10,7 @@ import {
   InputGroup,
   InputGroupAddon,
   FormCheckbox,
-  FormInput
+  FormInput,
 } from "shards-react";
 
 const SidebarCategories = ({ title }) => (
@@ -21,10 +21,10 @@ const SidebarCategories = ({ title }) => (
     <CardBody className="p-0">
       <ListGroup flush>
         <ListGroupItem className="px-3 pb-2">
-          <FormCheckbox className="mb-1" value="uncategorized" defaultChecked>
+          <FormCheckbox className="mb-1" value="uncategorized">
             Uncategorized
           </FormCheckbox>
-          <FormCheckbox className="mb-1" value="design" defaultChecked>
+          <FormCheckbox className="mb-1" value="design">
             Design
           </FormCheckbox>
           <FormCheckbox className="mb-1" value="development">
@@ -43,7 +43,7 @@ const SidebarCategories = ({ title }) => (
             <FormInput placeholder="New category" />
             <InputGroupAddon type="append">
               <Button theme="white" className="px-2">
-                <i className="material-icons">add</i>
+                <i className="material-icons">Agregar</i>
               </Button>
             </InputGroupAddon>
           </InputGroup>
@@ -57,11 +57,11 @@ SidebarCategories.propTypes = {
   /**
    * The component's title.
    */
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 
 SidebarCategories.defaultProps = {
-  title: "Categories"
+  title: "Categories",
 };
 
 export default SidebarCategories;
