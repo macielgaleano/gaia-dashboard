@@ -2,6 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Container, Navbar } from "shards-react";
+import { Nav, Button } from "react-bootstrap";
+import { actionLogout } from "../../../Redux/actions/actionLogout";
+import { useDispatch } from "react-redux";
 
 // import NavbarSearch from "./NavbarSearch";
 // import NavbarNav from "./NavbarNav/NavbarNav";
@@ -9,14 +12,36 @@ import { Container, Navbar } from "shards-react";
 
 const MainNavbar = ({ layout, stickyTop }) => {
   const classes = classNames("main-navbar", "bg-white", stickyTop && "sticky-top");
+  const dispatch = useDispatch();
 
   return (
     <div className={classes}>
       <Container className="p-0">
-        <Navbar type="light" className="align-items-stretch flex-md-nowrap p-0">
+        <Navbar
+          type="light"
+          className="d-flex align-items-center justify-content-end p-0"
+        >
           {/* <NavbarSearch /> */}
           {/* <NavbarNav /> */}
           {/* <NavbarToggle /> */}
+          <Nav>
+            <Nav.Link
+              className="d-flex align-items-center justify-content-end text-dark"
+              eventKey={2}
+            >
+              <strong style={{ fontSize: "1rem" }}>Bienvenido adminstrador,</strong>{" "}
+              <Button
+                variant="outline-primary"
+                className="ml-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(actionLogout());
+                }}
+              >
+                Cerrar sesion
+              </Button>{" "}
+            </Nav.Link>
+          </Nav>
         </Navbar>
       </Container>
     </div>

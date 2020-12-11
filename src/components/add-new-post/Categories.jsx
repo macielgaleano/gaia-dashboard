@@ -21,7 +21,7 @@ export default function Categories() {
         <FormInput
           placeholder="Seleccione una categoria"
           size="lg"
-          className="mb-3"
+          className=""
           value={inputVale}
         />
         <Dropdown open={dropdown1} toggle={() => toggle("dropdown1")} addonType="append">

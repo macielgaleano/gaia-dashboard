@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import axios from "axios";
+// import { useHistory } from "react-router-dom";
+//"react-router-dom": "4.3.1",
+import { useDispatch } from "react-redux";
+import { actionLogin } from "../../Redux/actions/actionLogin";
+import { Redirect } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorsAlert, setErrorsAlert] = useState([]);
   const [alertValue, setAlertValue] = useState("block");
+  // const history = useHistory();
+  const dispatch = useDispatch();
 
   function verfyData() {
     errorsAlert.length > 0 ? setAlertValue("block") : setAlertValue("none");
   }
 
-  const validateData = (e) => {
+  const validateData = async (e) => {
     setErrorsAlert([]);
     e.preventDefault();
     if (email.length < 10) {
@@ -28,8 +35,22 @@ export default function Login() {
         ...errorsAlert,
         "Password invalida, escriba una password mayor a 4 caracteres",
       ]);
+    } else {
+      await axios
+        .post("https://gaia-server.vercel.app/token/login/admin", {
+          email: email,
+          password: password,
+        })
+        .then((user) => {
+          console.log(user);
+          dispatch(actionLogin(user.data));
+          if (user.data.token === undefined) {
+            return <Redirect to="/login" />;
+          } else {
+            return <Redirect to="/" />;
+          }
+        });
     }
-    useEffect(() => {});
   };
 
   useEffect(() => {

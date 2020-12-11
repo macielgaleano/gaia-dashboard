@@ -8,9 +8,7 @@ const PublicRoute = ({ component: Component, restricted, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={(props) =>
-        user.token && restricted ? <Redirect to="/" /> : <Component {...props} />
-      }
+      render={(props) => (user.token ? <Redirect to="/" /> : <Component {...props} />)}
     />
   );
 };
