@@ -1,8 +1,8 @@
 import React from "react";
 import ReactQuill from "react-quill";
-import { Card, CardBody, Form, FormInput, Row, Col, Button } from "shards-react";
-import CustomFileUpload from "../components-overview/CustomFileUpload";
+import { Card, CardBody, FormInput, Row, Col, Button } from "shards-react";
 import Categories from "./Categories";
+import { useSelector } from "react-redux";
 
 import "react-quill/dist/quill.snow.css";
 import "../../assets/quill.css";
@@ -17,11 +17,36 @@ const Editor = () => {
   const [colors] = React.useState(["000", "fff"]);
   const [InputFileName, setInputFileName] = React.useState("Seleccione un archivo");
   const [description, setDescription] = React.useState();
+  const [picture, setPicture] = React.useState();
+  const store = useSelector((state) => state);
+
+  const sendDataProduct = (e) => {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("avatar", picture);
+    formData.append("colors", colors);
+    formData.append("materials", materials);
+    formData.append("size", size);
+    formData.append("category", cateogryValue);
+    formData.append("price", price);
+
+    fetch("https://gaia-server.vercel.app/admin/productos", {
+      method: "POST",
+      headers: new Headers({
+        Authorization: `Bearer ${store.user.token}`,
+      }),
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((json) => console.log(json));
+  };
 
   return (
     <Card small className="mb-3">
       <CardBody>
-        <Form className="add-new-post">
+        <div className="add-new-post">
           <FormInput
             size=""
             className="mb-3"
@@ -40,7 +65,10 @@ const Editor = () => {
                   type="file"
                   className="custom-file-input"
                   id="customFile2"
-                  onChange={(e) => setInputFileName(e.target.files[0].name)}
+                  onChange={(e) => {
+                    setInputFileName(e.target.files[0].name);
+                    setPicture(e.target.files[0]);
+                  }}
                 />
                 <label className="custom-file-label" htmlFor="customFile2">
                   {InputFileName}
@@ -86,17 +114,16 @@ const Editor = () => {
           <Row>
             <Col md={12}>
               <Button
+                onClick={sendDataProduct}
                 theme="dark"
                 size={"md"}
                 className="mb-2 mt-4 p4  mr-1"
-                type="submit"
-                value="Submit"
               >
                 Crear producto
               </Button>
             </Col>
           </Row>{" "}
-        </Form>
+        </div>
       </CardBody>
     </Card>
   );
