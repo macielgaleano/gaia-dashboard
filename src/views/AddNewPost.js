@@ -20,7 +20,7 @@ const AddNewPost = () => (
 
     <Row>
       {/* Editor */}
-      <Col lg="9" md="12">
+      <Col lg="10" md="12">
         <Editor />
       </Col>
 
