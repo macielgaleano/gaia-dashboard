@@ -17,12 +17,12 @@ const ProductList = () => {
 
   function deleteProduct(slug) {
     axios
-      .delete("https://gaia-server.vercel.app/admin/productos", {
+      .delete(`https://gaia-server.vercel.app/admin/productos/${slug}`, {
+        data: { foo: "bar" },
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${store.user.token}`,
         },
-        data: { slug: slug },
       })
       .then((res) => {
         const newsProducts = products.filter((product) => product.slug !== slug);
