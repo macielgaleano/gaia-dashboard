@@ -3,8 +3,10 @@ import { Card, CardHeader, CardBody } from "shards-react";
 import axios from "axios";
 import { MdSystemUpdateAlt } from "react-icons/md";
 import { RiDeleteBack2Line } from "react-icons/ri";
+import { useSelector } from "react-redux";
 
-const productList = () => {
+const ProductList = () => {
+  const store = useSelector((state) => state);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -13,13 +15,28 @@ const productList = () => {
       .then((res) => setProducts(res.data));
   });
 
+  function deleteProduct(slug) {
+    axios
+      .delete("https://gaia-server.vercel.app/admin/productos", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${store.user.token}`,
+        },
+        data: { slug: slug },
+      })
+      .then((res) => {
+        const newsProducts = products.filter((product) => product.slug !== slug);
+        setProducts(newsProducts);
+      });
+  }
+
   return (
     <Card small className="mb-4">
       <CardHeader className="border-bottom">
         <h6 className="m-0">Productos activos</h6>
       </CardHeader>
       <CardBody className="p-0 pb-3">
-        <table className="table mb-0">
+        <table className="table mb-0" responsive striped bordered hover variant="dark">
           <thead className="bg-light">
             <tr>
               <th scope="col" className="border-0">
@@ -39,9 +56,6 @@ const productList = () => {
               </th>
               <th scope="col" className="border-0">
                 Size
-              </th>
-              <th scope="col" className="border-0">
-                Colors
               </th>
               <th scope="col" className="border-0">
                 Materials
@@ -65,7 +79,7 @@ const productList = () => {
                     <td>{item.description}</td>
                     <td>${item.price}</td>
                     <td>{item.size} cm</td>
-                    <td>{item.colors}</td>
+
                     <td>
                       <ul>
                         {item.materials.map((material) => (
@@ -74,7 +88,7 @@ const productList = () => {
                       </ul>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-info">
+                      <button type="button" className="btn btn-info">
                         <MdSystemUpdateAlt
                           style={{ fontSize: "1rem" }}
                         ></MdSystemUpdateAlt>{" "}
@@ -82,7 +96,11 @@ const productList = () => {
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-danger">
+                      <button
+                        type="button"
+                        className="btn btn-danger "
+                        onClick={() => deleteProduct(item.slug)}
+                      >
                         <RiDeleteBack2Line
                           style={{ fontSize: "1rem" }}
                         ></RiDeleteBack2Line>{" "}
@@ -99,4 +117,4 @@ const productList = () => {
   );
 };
 
-export default productList;
+export default ProductList;

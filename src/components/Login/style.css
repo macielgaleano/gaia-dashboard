@@ -1833,7 +1833,7 @@ iframe {
   background: -webkit-linear-gradient(-135deg, #075311, #4158d0);
   background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
   background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-135deg, rgb(12, 29, 180), #4654a1);
+  background: linear-gradient(-135deg, rgb(12, 29, 180), #ffffff);
 }
 
 .wrap-login100 {
@@ -1866,6 +1866,21 @@ iframe {
 [  ]*/
 .login100-form {
   width: 290px;
+}
+
+@media screen and (max-width: 1600px) {
+  th {
+    font-size: 0.67rem;
+    max-width: 150px;
+  }
+  td {
+    font-size: 0.67rem;
+    max-width: 150px;
+  }
+  td button {
+    font-size: 0.67rem;
+    max-width: 150px;
+  }
 }
 
 .login100-form-title {

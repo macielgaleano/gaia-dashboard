@@ -31,7 +31,7 @@ const Materials = ({ materials, setMaterials }) => {
             {materials.length > 0 &&
               materials.map((item, index) => {
                 return (
-                  <li
+                  <div
                     key={index}
                     className="ml-2 mb-1 d-flex justify-content-between"
                     value="uncategorized"
@@ -40,7 +40,7 @@ const Materials = ({ materials, setMaterials }) => {
                     <button type="button" className="btn btn-primary mr-2">
                       <BsFillTrashFill className="" />
                     </button>
-                  </li>
+                  </div>
                 );
               })}
           </ListGroupItem>

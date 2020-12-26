@@ -20,15 +20,11 @@ const Product = () => {
 
         <Row>
           {/* Editor */}
-          <Col lg="10" md="12">
+          <Col lg="12" md="12">
             <ProductList />
           </Col>
 
           {/* Sidebar Widgets */}
-          <Col lg="3" md="12">
-            {/* <SidebarActions />
-      <SidebarCategories /> */}
-          </Col>
         </Row>
       </Container>
     </div>
